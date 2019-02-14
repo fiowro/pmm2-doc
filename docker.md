@@ -1,4 +1,4 @@
-# Running PMM Server via Docker
+## Running PMM Server via Docker
 
 *Docker* images of *PMM Server* are stored at the [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server) public
 repository. The host must be able to run *Docker* 1.12.6 or later, and have
@@ -17,7 +17,7 @@ For more information about using *Docker*, see the [https://docs.docker.com/](Do
 *By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
 
 <details>
-  <summary><h2>Setting Up a Docker Container for PMM Server</h2></summary>
+  <summary><h3>Setting Up a Docker Container for PMM Server</h3></summary>
 
 A Docker image is a collection of preinstalled software which enables running
 a selected version of PMM Server on your computer. A Docker image is not run
