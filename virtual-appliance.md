@@ -120,7 +120,7 @@ When run PMM Server as virtual appliance, The IP address of your PMM Server
 appears at the top of the screen above the login prompt. Use this address to
 acces the web interface of PMM Server.
 
-   The IP address appears above the login prompt.
+![alt text](https://www.percona.com/doc/percona-monitoring-and-management/_images/command-line.login.1.png "The IP address appears above the login prompt")
 
 PMM Server uses DHCP for security reasons, and thus you need to check the PMM
 Server console in order to identify the address.  If you require configuration
@@ -135,19 +135,18 @@ To run the PMM Server, start the virtual machine and open in your browser the
 URL that appears at the top of the terminal when you are logging in to the
 virtual machine.
 
-   The URL to open in the browser appears at the top of the terminal when
-   running the virtual machine.
+![alt text](https://www.percona.com/doc/percona-monitoring-and-management/_images/command-line.login.1.png "The URL to open in the browser appears at the top of the terminal when running the virtual machine")
 
 If you run PMM Server in your browser for the first time, you are requested to
 supply the user and a new password. Optionally, you may also provide your SSH
 public key.
 
-   Set the user and password to access the PMM Server web interface.
+![alt text](https://www.percona.com/doc/percona-monitoring-and-management/_images/pmm.server.password-change.png "Set the user and password to access the PMM Server web interface")
 
 Click Submit and enter your user name and password in the dialog window
 that pops up. The PMM Server is now ready and the home page opens.
 
-   PMM Server home page
+![alt text](https://www.percona.com/doc/percona-monitoring-and-management/_images/pmm.home-page.png "PMM Server home page")
 
 You are creating a username and password that will be used for two purposes:
 
