@@ -1,11 +1,14 @@
 docs:
-  - title: Percona Monitoring and Management Documentation
+  - title: Percona Monitoring and Management Installation and Configuration
+  - title: Installing PMM Server
     children:
-      - title: "PMM Concepts"
-        url: ./
-  - title: Installation and Configuration
+      - title: "Docker"
+        url: ./docker
+      - title: "Virtual Appliance"
+        url: ./virtual-appliance
+      - title: "Amazon AWS Marketplace"
+        url: ./amazon-rds-marketplace
+  - title: Configuring PMM Server
     children:
-      - title: "Installing PMM Server"
-        url: ./installing-pmm-server
-      - title: "Configuring PMM Server"
-        url: ./configuring-pmm-server
+      - title: "PMM GUI"
+        url: ./tool
