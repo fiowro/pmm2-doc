@@ -1,6 +1,6 @@
 ## Running PMM Server via Docker
 
-*Docker* images of *PMM Server* are stored at the [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server) public
+*Docker* images of *PMM Server* are stored at the [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/) public
 repository. The host must be able to run *Docker* 1.12.6 or later, and have
 network access.
 
@@ -10,9 +10,9 @@ node, but it is not linear when you add more nodes.  For example, data from 20
 nodes should be easily handled with 16 GB.
 
 Make sure that the firewall and routing rules of the host do not constrain the
-*Docker* container. For more information, see [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#troubleshoot-connection](How to troubleshoot communication issues between PMM Client and PMM Server).
+*Docker* container. For more information, see [How to troubleshoot communication issues between PMM Client and PMM Server](https://www.percona.com/doc/percona-monitoring-and-management/faq.html#troubleshoot-connection).
 
-For more information about using *Docker*, see the [https://docs.docker.com/](Docker Docs).
+For more information about using *Docker*, see the [Docker Docs](https://docs.docker.com/).
 
 **Note:** *By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
 
@@ -101,7 +101,7 @@ This command does the following:
   you can map the landing page to port 8080 using ``-p 8080:80``.
 
 * The `-v` option mounts volumes
-  from the `pmm-data` container (see [https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.setting-up.html#data-container](Creating the pmm-data Container)).
+  from the `pmm-data` container (see [Creating the pmm-data Container](https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.setting-up.html#data-container)).
 
 * The `--name` option assigns a custom name to the container
   that you can use to reference the container within the Docker network.
@@ -119,7 +119,7 @@ This command does the following:
 
 To install specific PMM Server version instead of the latest one, just put
 desired version number after the colon. Also in this scenario it may be useful
-to [https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html](prevent updating PMM Server via the web interface) with the `DISABLE_UPDATES` docker option.
+to [prevent updating PMM Server via the web interface](https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html) with the `DISABLE_UPDATES` docker option.
 
 For example, installing version 1.14.1 with disabled update button in the web
 interface would look as follows:
@@ -148,7 +148,7 @@ When running the PMM Server, you may pass additional parameters to the
 **docker run** subcommand. All options that appear after the `-e` option
 are the additional parameters that modify the way how PMM Server operates.
 
-The section [https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html#pmm-glossary-pmm-server-additional-option](PMM Server Additional Options) lists all
+The section [PMM Server Additional Options](https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html#pmm-glossary-pmm-server-additional-option) lists all
 supported additional options.
 
 </details>
@@ -180,7 +180,7 @@ number by using the **docker exec** command:
 ```
 
 To check if there exists a newer version of PMM Server,
-visit [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server).
+visit [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/).
 
 .. _pmm.deploying.server.docker-container.renaming:
 
@@ -206,7 +206,7 @@ avoid name conflicts during the update procedure:
 ### Pulling a new Docker Image
 
 Docker images for all versions of PMM are available from
-[https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server)
+[percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/)
 Docker repository.
 
 When pulling a newer Docker image, you may either use a specific version
@@ -243,7 +243,7 @@ use **docker run** to create a `pmm-server` container using the new image.
 
 The **docker run** command refers to the pulled image as the last parameter. If
 you used a specific version number when running **docker pull** (see
-[https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.setting-up.html#pmm-server-docker-image-pulling](Pulling the PMM Server Docker Image)) replace `latest` accordingly.
+[Pulling the PMM Server Docker Image](https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.setting-up.html#pmm-server-docker-image-pulling)) replace `latest` accordingly.
 
 Note that this command also refers to `pmm-data` as the value of
 `--volumes-from` option. This way, your new version will continue to use the
@@ -260,14 +260,14 @@ Check if the new container is running using **docker ps**.
 
 ```
 
-Then, make sure that the PMM version has been updated (see [https://www.percona.com/doc/percona-monitoring-and-management/glossary.terminology.html#term-pmm-version](PMM
-Version)) by checking the PMM Server web interface.
+Then, make sure that the PMM version has been updated (see [PMM
+Version](https://www.percona.com/doc/percona-monitoring-and-management/glossary.terminology.html#term-pmm-version)) by checking the PMM Server web interface.
 
 ### Removing the backup container
 
 After you have tried the features of the new version, you may decide to
 continupe using it. The backup container that you have stored
-([https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.upgrading.html#pmm-deploying-server-docker-container-renaming](Creating a backup version of the current pmm-server Docker container)) is no longer needed in this
+([Creating a backup version of the current pmm-server Docker container](https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.upgrading.html#pmm-deploying-server-docker-container-renaming)) is no longer needed in this
 case.
 
 To remove this backup container, you need the **docker rm** command:
@@ -286,7 +286,7 @@ to stop and remove the new `pmm-server` container.
 ```
 
 Now, rename the `pmm-server-backup` to `pmm-server`
-(see [https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.upgrading.html#pmm-deploying-server-docker-container-renaming](Creating a backup version of the current pmm-server Docker container)) and start it.
+(see [Creating a backup version of the current pmm-server Docker container](https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.upgrading.html#pmm-deploying-server-docker-container-renaming)) and start it.
 
 ```bash
    $ docker start pmm-server
@@ -392,7 +392,7 @@ Run the following commands as root or by using the **sudo** command
 **important:** *The last step creates a new `pmm-data` container based on the `percona/pmm-server:latest` image. If you do not intend to use the `latest` tag, specify the exact version instead, such as `1.5.0`. You can find all available versions of `pmm-server` images at [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server).*
 
 Assuming that you have a backup copy of your `pmm-data`, created according
-to the procedure described in the [https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.backing-up.html](Backing Up PMM Data from the Docker Container) section,
+to the procedure described in the [Backing Up PMM Data from the Docker Container](https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.backing-up.html) section,
 restore your data as follows:
 
 1. Change the working directory to the directory that contains your `pmm-data` backup files.
