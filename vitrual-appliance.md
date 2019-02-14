@@ -113,4 +113,87 @@ The following procedure describes how to run the PMM Server appliance using VMwa
 
 </details>
 
+<details>
+  <summary style="font-size:1.25em;"><strong>Identifying PMM Server IP Address</strong></summary>
+
+When run PMM Server as virtual appliance, The IP address of your PMM Server
+appears at the top of the screen above the login prompt. Use this address to
+acces the web interface of PMM Server.
+
+   The IP address appears above the login prompt.
+
+PMM Server uses DHCP for security reasons, and thus you need to check the PMM
+Server console in order to identify the address.  If you require configuration
+of a static IP address, see
+[https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html](Configuring network interfaces in CentOS).
+
+</details>
+
+<details>
+  <summary style="font-size:1.25em;"><strong>Accessing PMM Server</strong></summary>
+
+To run the PMM Server, start the virtual machine and open in your browser the
+URL that appears at the top of the terminal when you are logging in to the
+virtual machine.
+
+   The URL to open in the browser appears at the top of the terminal when
+   running the virtual machine.
+
+If you run PMM Server in your browser for the first time, you are requested to
+supply the user and a new password. Optionally, you may also provide your SSH
+public key.
+
+   Set the user and password to access the PMM Server web interface.
+
+Click Submit and enter your user name and password in the dialog window
+that pops up. The PMM Server is now ready and the home page opens.
+
+   PMM Server home page
+
+You are creating a username and password that will be used for two purposes:
+
+1. authentication as a user to PMM - this will be the credentials you need in order
+   to log in to PMM.
+2. authentication between PMM Server and PMM Clients - you will
+   re-use these credentials when configuring pmm-client for the first time on a
+   server, for example:
+
+   Run this command as root or by using the **sudo** command
+
+```bash
+   $ pmm-admin config --username= --password= --server=1.2.3.4
+```
+
+</details>
+
+<details>
+  <summary style="font-size:1.25em;"><strong>Accessing the Virtual Machine</strong></summary>
+
+To access the VM with the *PMM Server* appliance via SSH,
+provide your public key:
+
+1. Open the URL for accessing PMM in a web browser.
+
+   The URL is provided either in the console window or in the appliance log.
+
+2. Submit your **public key** in the PMM web interface.
+
+After that you can use `ssh` to log in as the `admin` user.
+For example, if *PMM Server* is running at 192.168.100.1
+and your **private key** is :`~/.ssh/pmm-admin.key`,
+use the following command:
+
+```bash
+   ssh admin@192.168.100.1 -i ~/.ssh/pmm-admin.key
+```
+
+</details>
+
+<details>
+  <summary style="font-size:1.25em;"><strong>Next Steps</strong></summary>
+
+[https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-server-verifying](Verify that PMM Server is running) by connecting to the PMM web interface using the IP address
+assigned to the virtual appliance, then [https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-client-installing](install PMM Client) on all database hosts that you want to monitor.
+
+</details>
 
