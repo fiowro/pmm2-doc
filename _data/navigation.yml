@@ -1,0 +1,11 @@
+docs:
+  - title: Percona Monitoring and Management Documentation
+    children:
+      - title: "PMM Concepts"
+        url: ./
+  - title: Installation and Configuration
+    children:
+      - title: "Installing PMM Server"
+        url: ./installing-pmm-server
+      - title: "Configuring PMM Server"
+        url: ./configuring-pmm-server
