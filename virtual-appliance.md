@@ -6,11 +6,11 @@ is a `tar` archive with necessary files that follow the *Open
 Virtualization Format* (OVF).  OVF is supported by most popular virtualization
 platforms, including:
 
-* [https://www.vmware.com/products/esxi-and-esx.html](VMware - ESXi 6.5)
-* [https://www.redhat.com/en/technologies/virtualization](Red Hat Virtualization)
-* [https://www.virtualbox.org/](VirtualBox)
-* [https://www.xenserver.org/](XenServer)
-* [https://www.microsoft.com/en-us/cloud-platform/system-center](Microsoft System Center Virtual Machine Manager)
+* [VMware - ESXi 6.5](https://www.vmware.com/products/esxi-and-esx.html)
+* [Red Hat Virtualization](https://www.redhat.com/en/technologies/virtualization)
+* [VirtualBox](https://www.virtualbox.org/)
+* [XenServer](https://www.xenserver.org/)
+* [Microsoft System Center Virtual Machine Manager](https://www.microsoft.com/en-us/cloud-platform/system-center)
 
 <details>
   <summary style="font-size:1.25em;"><strong>Supported Platforms for Running the PMM Server Virtual Appliance</strong></summary>
@@ -24,7 +24,7 @@ VMware ESXi, for example), but additional steps may be required.
 
 The virtual machine used for the appliance runs CentOS 7.
 
-**Warning:** *The appliance must run in a network with DHCP, which will automatically assign an IP address for it. To assign a static IP manually, you need to acquire the root access as described in [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#pmm-deploying-server-virtual-appliance-root-password-setting](How to set the root password when PMM Server is installed as a virtual appliance). Then, see the documentation for the operating system for further instructions: [https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html](Configuring network interfaces in CentOS).
+**Warning:** *The appliance must run in a network with DHCP, which will automatically assign an IP address for it. To assign a static IP manually, you need to acquire the root access as described in [How to set the root password when PMM Server is installed as a virtual appliance](https://www.percona.com/doc/percona-monitoring-and-management/faq.html#pmm-deploying-server-virtual-appliance-root-password-setting). Then, see the documentation for the operating system for further instructions: [Configuring network interfaces in CentOS](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html).
 
 Instructions for setting up the virtual machine for different platforms:
 
@@ -59,7 +59,7 @@ To get the IP address for accessing PMM, the script waits for 1 minute until the
 
 In this script, `[VERSION NUMBER]` is the placeholder of the version of PMM Server that you are installing. By convention **OVA** files start with *pmm-server-* followed by the full version number such as 1.17.0.
 
-To use this script, make sure to replace this placeholder with the the name of the image that you have downloaded from the [https://www.percona.com/downloads/pmm](Download Percona Monitoring and Management) site. This script also assumes that you have changed the working directory (using the cd command, for example) to the directory which contains the downloaded image file.
+To use this script, make sure to replace this placeholder with the the name of the image that you have downloaded from the [Download Percona Monitoring and Management](https://www.percona.com/downloads/pmm) site. This script also assumes that you have changed the working directory (using the cd command, for example) to the directory which contains the downloaded image file.
 
 </details>
 
@@ -68,7 +68,7 @@ To use this script, make sure to replace this placeholder with the the name of t
 
 The following procedure describes how to run the PMM Server appliance using the graphical user interface of VirtualBox:
 
-1. Download the OVA. The latest version is available at the [https://www.percona.com/downloads/pmm](Download Percona Monitoring and Management) site.
+1. Download the OVA. The latest version is available at the [Download Percona Monitoring and Management](https://www.percona.com/downloads/pmm) site.
 
 2. Import the appliance. For this, open the File menu and click Import Appliance and specify the path to the OVA and click Continue. Then, select Reinitialize the MAC address of all network cards and click Import.
 
@@ -89,7 +89,7 @@ The following procedure describes how to run the PMM Server appliance using the 
 
 The following procedure describes how to run the PMM Server appliance using VMware Workstation Player:
 
-1. Download the OVA. The latest version is available at the [https://www.percona.com/downloads/pmm](Download Percona Monitoring and Management) site.
+1. Download the OVA. The latest version is available at the [Download Percona Monitoring and Management](https://www.percona.com/downloads/pmm) site.
 
 2. Import the appliance.
 
@@ -124,8 +124,7 @@ acces the web interface of PMM Server.
 
 PMM Server uses DHCP for security reasons, and thus you need to check the PMM
 Server console in order to identify the address.  If you require configuration
-of a static IP address, see
-[https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html](Configuring network interfaces in CentOS).
+of a static IP address, see [Configuring network interfaces in CentOS](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html).
 
 </details>
 
@@ -192,8 +191,8 @@ use the following command:
 <details>
   <summary style="font-size:1.25em;"><strong>Next Steps</strong></summary>
 
-[https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-server-verifying](Verify that PMM Server is running) by connecting to the PMM web interface using the IP address
-assigned to the virtual appliance, then [https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-client-installing](install PMM Client) on all database hosts that you want to monitor.
+[Verify that PMM Server is running](https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-server-verifying) by connecting to the PMM web interface using the IP address
+assigned to the virtual appliance, then [install PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-client-installing) on all database hosts that you want to monitor.
 
 </details>
 
