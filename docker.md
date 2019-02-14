@@ -16,8 +16,8 @@ For more information about using *Docker*, see the [https://docs.docker.com/](Do
 
 *By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
 
-<details><summary>Setting Up a Docker Container for PMM Server</summary>
-<p>
+<details>
+  <summary>Setting Up a Docker Container for PMM Server</summary>
 
 A Docker image is a collection of preinstalled software which enables running
 a selected version of PMM Server on your computer. A Docker image is not run
@@ -152,5 +152,5 @@ are the additional parameters that modify the way how PMM Server operates.
 The section [https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html#pmm-glossary-pmm-server-additional-option](PMM Server Additional Options) lists all
 supported additional options.
 
-</p>
 </details>
+
