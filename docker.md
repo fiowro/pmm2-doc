@@ -1,3 +1,5 @@
+# Running PMM Server via Docker
+
 *Docker* images of *PMM Server* are stored at the [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server) public
 repository. The host must be able to run *Docker* 1.12.6 or later, and have
 network access.
@@ -15,7 +17,7 @@ For more information about using *Docker*, see the [https://docs.docker.com/](Do
 *By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
 
 <details>
-  <summary>Setting Up a Docker Container for PMM Server</summary>
+  <summary><h2>Setting Up a Docker Container for PMM Server</h2></summary>
 
 A Docker image is a collection of preinstalled software which enables running
 a selected version of PMM Server on your computer. A Docker image is not run
@@ -27,7 +29,7 @@ The setup begins with pulling the required Docker image. Then, you proceed by
 creating a special container for persistent PMM data. The last step is
 creating and launching the PMM Server container.
 
-## Pulling the PMM Server Docker Image
+### Pulling the PMM Server Docker Image
 
 To pull the latest version from Docker Hub:
 
@@ -40,7 +42,7 @@ However, it ensures that if there is an older version of the image tagged with
 `latest` available locally, it will be replaced by the actual latest
 version.
 
-## Creating the pmm-data Container
+### Creating the pmm-data Container
 
 To create a container for persistent PMM data, run the following command:
 
@@ -74,7 +76,7 @@ The previous command does the following:
 
 **Important:** *Make sure that the data volumes that you initialize with the `-v` option match those given in the example. PMM Server expects that those directories are bind mounted exactly as demonstrated.*
 
-## Creating and Launching the PMM Server Container
+### Creating and Launching the PMM Server Container
 
 To create and launch PMM Server in one command, use **docker run**:
 
@@ -113,7 +115,7 @@ This command does the following:
 * `percona/pmm-server:latest` is the name and version tag of the image
   to derive the container from.
 
-## Installing and using specific docker version
+### Installing and using specific docker version
 
 To install specific PMM Server version instead of the latest one, just put
 desired version number after the colon. Also in this scenario it may be useful
@@ -140,8 +142,7 @@ interface would look as follows:
       percona/pmm-server:1.14.1
 ```
 
-
-## Additional options
+### Additional options
 
 When running the PMM Server, you may pass additional parameters to the
 **docker run** subcommand. All options that appear after the `-e` option
@@ -150,17 +151,6 @@ are the additional parameters that modify the way how PMM Server operates.
 The section [https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html#pmm-glossary-pmm-server-additional-option](PMM Server Additional Options) lists all
 supported additional options.
 
-</details>
-
-# A collapsible section with markdown
-<details>
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
 </details>
 
 
