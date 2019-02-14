@@ -6,10 +6,6 @@ docs:
   - title: Installation and Configuration
     children:
       - title: "Installing PMM Server"
-        children:
-          -title: "Docker"
-           url: ./install/docker
-          -title: "Virtual Appliance"
-           url: ./install/virtual-appliance
+        url: ./installing-pmm-server
       - title: "Configuring PMM Server"
         url: ./configuring-pmm-server
