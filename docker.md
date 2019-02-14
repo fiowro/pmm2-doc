@@ -1,5 +1,3 @@
-# Running PMM Server via Docker
-
 *Docker* images of *PMM Server* are stored at the [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server) public
 repository. The host must be able to run *Docker* 1.12.6 or later, and have
 network access.
@@ -153,4 +151,16 @@ The section [https://www.percona.com/doc/percona-monitoring-and-management/gloss
 supported additional options.
 
 </details>
+
+# A collapsible section with markdown
+<details>
+  <summary>Click to expand!</summary>
+  
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
+
 
