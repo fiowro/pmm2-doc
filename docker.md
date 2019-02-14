@@ -14,10 +14,10 @@ Make sure that the firewall and routing rules of the host do not constrain the
 
 For more information about using *Docker*, see the [https://docs.docker.com/](Docker Docs).
 
-*By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
+**Note:** *By default, [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#data-retention](retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [https://www.percona.com/doc/percona-monitoring-and-management/faq.html#performance-issues](disabling table statistics)? which can greatly decrease Prometheus database size.*
 
 <details>
-  <summary><h3>Setting Up a Docker Container for PMM Server</h3></summary>
+  <summary><strong>Setting Up a Docker Container for PMM Server</strong></summary>
 
 A Docker image is a collection of preinstalled software which enables running
 a selected version of PMM Server on your computer. A Docker image is not run
@@ -92,7 +92,7 @@ To create and launch PMM Server in one command, use **docker run**:
 This command does the following:
 
 * The **docker run** command runs a new container based on the
-  |opt.pmm-server.latest| image.
+  `percona/pmm-server:latest` image.
 
 * The `-d` option starts the container in the background (detached mode).
 
@@ -154,7 +154,7 @@ supported additional options.
 </details>
 
 <details>
-  <summary><h2>Updating PMM Server Using Docker</h2></summary>
+  <summary><strong>Updating PMM Server Using Docker</strong></summary>
 
 To check the version of PMM Server, run **docker ps** on the host.
 
@@ -296,4 +296,147 @@ Now, rename the `pmm-server-backup` to `pmm-server`
 
 </details>
 
+<details>
+  <summary><strong>Backing Up PMM Data from the Docker Container</strong></summary>
+
+When PMM Server is run via docker, its data are stored in the `pmm-data`
+container. To avoid data loss, you can extract the data and store outside of the
+container.
+
+This example demonstrates how to back up PMM data on the computer where the
+docker container is run and then how to restore them.
+
+To back up the information from `pmm-data`, you need to create a local
+directory with essential sub folders and then run docker commands to copy
+PMM related files into it.
+
+1. Create a backup directory and make it the current working directory. In this
+   example, we use *pmm-data-backup* as the directory name.
+
+   ```bash
+      $ mkdir pmm-data-backup; cd pmm-data-backup
+   ```
+
+2. Create the essential sub directories:
+
+   ```bash
+      $ mkdir -p opt/prometheus
+      $ mkdir -p var/lib
+   ```
+
+Run the following commands as root or by using the **sudo** command
+
+1. Stop the docker container:
+
+   ```bash
+      $ docker stop pmm-server
+   ```
+
+2. Copy data from the `pmm-data` container:
+
+   ```bash
+      $ docker cp pmm-data:/opt/prometheus/data opt/prometheus/
+      $ docker cp pmm-data:/opt/consul-data opt/
+      $ docker cp pmm-data:/var/lib/mysql var/lib/
+      $ docker cp pmm-data:/var/lib/grafana var/lib/
+   ```
+
+Now, your PMM data are backed up and you can start PMM Server again:
+
+   ```bash
+      $ docker start pmm-server
+   ```
+
+</details>
+
+<details>
+  <summary><strong>Restoring the Backed Up Information to the PMM Data Container</strong></summary>
+
+If you have a backup copy of your `pmm-data` container, you can restore it
+into a docker container. Start with renaming the existing PMM containers to
+prevent data loss, create a new `pmm-data` container, and finally copy the
+backed up information into the `pmm-data` container.
+
+Run the following commands as root or by using the **sudo** command
+
+1. Stop the running `pmm-server` container.
+
+   ```bash
+      $ docker stop pmm-server
+   ```
+
+2. Rename the `pmm-server` container to `pmm-server-backup`.
+
+   ```bash
+      $ docker rename pmm-server pmm-server-backup
+   ```
+
+3. Rename the `pmm-data` to `pmm-data-backup`
+
+   ```bash
+      $ docker rename pmm-data pmm-data-backup
+   ```
+
+4. Create a new `pmm-data` container
+
+   ```bash
+      $ docker create \
+         -v /opt/prometheus/data \
+         -v /opt/consul-data \
+         -v /var/lib/mysql \
+         -v /var/lib/grafana \
+         --name pmm-data \
+         percona/pmm-server:latest /bin/true
+   ```
+   
+**important:** *The last step creates a new `pmm-data` container based on the `percona/pmm-server:latest` image. If you do not intend to use the `latest` tag, specify the exact version instead, such as `1.5.0`. You can find all available versions of `pmm-server` images at [https://hub.docker.com/r/percona/pmm-server/tags/](percona/pmm-server).*
+
+Assuming that you have a backup copy of your `pmm-data`, created according
+to the procedure described in the [https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.backing-up.html](Backing Up PMM Data from the Docker Container) section,
+restore your data as follows:
+
+1. Change the working directory to the directory that contains your `pmm-data` backup files.
+
+   ```bash
+      $ cd ~/pmm-data-backup
+   ```
+
+   **Note:** *This example assumes that the backup directory is found in your home directory.*
+
+2. Copy data from your backup directory to the `pmm-data` container.
+
+   ```bash
+      $ docker cp opt/prometheus/data pmm-data:/opt/prometheus/
+      $ docker cp opt/consul-data pmm-data:/opt/
+      $ docker cp var/lib/mysql pmm-data:/var/lib/
+      $ docker cp var/lib/grafana pmm-data:/var/lib/
+   ```
+ 
+3. Apply correct ownership to `pmm-data` files:
+
+   ```bash
+      $ docker run --rm --volumes-from pmm-data -it percona/pmm-server:latest chown -R pmm:pmm /opt/prometheus/data /opt/consul-data
+      $ docker run --rm --volumes-from pmm-data -it percona/pmm-server:latest chown -R grafana:grafana /var/lib/grafana
+      $ docker run --rm --volumes-from pmm-data -it percona/pmm-server:latest chown -R mysql:mysql /var/lib/mysql
+   ```
+ 
+4. Run (create and launch) a new `pmm-server` container:
+
+   ```bash
+      $ docker run -d \
+         -p 80:80 \
+         --volumes-from pmm-data \
+         --name pmm-server \
+         --restart always \
+         percona/pmm-server:latest
+   ```
+
+To make sure that the new server is available run the |pmm-admin.check-network|
+command from the computer where PMM Client is installed. |tip.run-this.root|.
+
+```bash
+   $ pmm-admin check-network
+```
+
+</details>
 
