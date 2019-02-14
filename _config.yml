@@ -1,4 +1,5 @@
 remote_theme: "mmistakes/minimal-mistakes@4.14.1"
+markdown: CommonMarkGhPages
 plugins:
   - jekyll-include-cache
 
