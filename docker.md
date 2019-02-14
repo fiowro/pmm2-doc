@@ -350,7 +350,7 @@ Now, your PMM data are backed up and you can start PMM Server again:
 </details>
 
 <details>
-  <summary><p><strong>Restoring the Backed Up Information to the PMM Data Container</strong></p></summary>
+  <summary style="font-size:1.25em;"><strong>Restoring the Backed Up Information to the PMM Data Container</strong></summary>
 
 If you have a backup copy of your `pmm-data` container, you can restore it
 into a docker container. Start with renaming the existing PMM containers to
