@@ -122,7 +122,7 @@ Percona provides public Amazon Machine Images (AMI) with PMM Server in all regio
 
 
 | Region | String | AMI ID |
-+--------+--------+--------+
+|--------|--------|--------|
 |Asia Pacific (Tokyo) | ap-northeast-1 | ami-081b63c019880c9d6 |
 |Asia Pacific (Seoul) | ap-northeast-2 |	ami-0299fd006902387fb |
 |Asia Pacific (Mumbai)|	ap-south-1     |	ami-0ae6d88793bfd1c25 |
